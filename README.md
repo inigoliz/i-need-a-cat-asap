@@ -5,7 +5,7 @@
 The cat shelter is a highly monitorized place by the desperate cat seekers in Copenhagen. The few offers of adoption for flat-cats run out in a matter of hours.
 In a desperate race to be the fastest one to call when a new cat is available, this bot webscraps the shelter website.
 
-A RaspberryPi running the code will have the solely mission to check if the new cats available differ from the old ones. If that is the case, it will email me, another eager cat seeker.
+A RaspberryPi running the code will have the solely mission to check if new kittens are available for adoption. If that is the case, it will email me, another eager cat seeker.
 
 In order to use it for your own cat-seeking, provide the following information in `config.yml`:
 ```yaml
