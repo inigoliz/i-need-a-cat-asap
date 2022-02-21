@@ -20,11 +20,10 @@ def send_email(new_cats, url, flat_cat):
 
     msg = EmailMessage()
     msg['From'] = config['sender_email']
-    msg['To'] = config['receiver_mail']
     if flat_cat:
         msg['Subject'] = 'New FLAT cats!'
     else:
-        msg['Subject'] = 'New (non-flat) cats!'
+        msg['Subject'] = 'New (non-flat) cats...'
     msg.set_content("""\
     New kities ({}) are waiting to be adopted by YOU!
     Check out the website here:
@@ -37,15 +36,16 @@ def send_email(new_cats, url, flat_cat):
     smtp_server = "smtp.gmail.com"
 
     context = ssl.create_default_context()
+    msg['To'] = config['receiver_mail']
     with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
         server.login(config['sender_email'], password)
         server.send_message(msg)
 
-    # if flat_cat:
-    #     msg['To'] = config['receiver_mail2']
-    #     with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-    #         server.login(config['sender_email'], password)
-    #         server.send_message(msg)
+    if flat_cat:
+        msg['To'] = config['receiver_mail2']
+        with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+            server.login(config['sender_email'], password)
+            server.send_message(msg)
 
 
 def save(names, memory_file):
@@ -114,7 +114,7 @@ def check_and_notify_me(memory_file, url, flat_cat=False):
 
     if len(new_cats):
         send_email(new_cats, url, flat_cat)
-        print(new_cats)
+        # print(new_cats)
 
 
 def main():
