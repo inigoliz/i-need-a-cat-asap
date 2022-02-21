@@ -16,7 +16,7 @@ receiver_mail: zzz@zzz.com
 receiver_mail2: zzz@zzz.com
 ```
 
-Moreover, to run the file every e.g. 5 minutes, schedule a crontab job using `crontab -e`:
+Moreover, to run the file every e.g. 5 minutes, schedule a crontab job in the RaspberryPi using `crontab -e`:
 ```
 */5 * * * * /home/pi/Documents/Proyects/INeedACat/find_cat.sh
 ```
