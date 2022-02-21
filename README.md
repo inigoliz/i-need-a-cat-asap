@@ -12,7 +12,7 @@ In order to use it for your own cat-seeking, provide the following information i
 sender_email: xxx@gmail.com
 password: abc123
 receiver_mail: zzz@zzz.com
-receiver_mail2: zzz@zzz.com
+receiver_mail2: zzz@zzz.com (optional)
 ```
 
 Moreover, to run the file every, e.g., 5 minutes, schedule a crontab job in the RaspberryPi using `crontab -e`:
