@@ -13,7 +13,7 @@ import sys
 import re
 
 
-def send_email(new_cats, url):
+def send_email(new_cats, url, flat_cat):
 
     with open('config.yml', 'r') as file:
         config = yaml.safe_load(file)
@@ -21,7 +21,10 @@ def send_email(new_cats, url):
     msg = EmailMessage()
     msg['From'] = config['sender_email']
     msg['To'] = config['receiver_mail']
-    msg['Subject'] = 'New cats!'
+    if flat_cat:
+        msg['Subject'] = 'New FLAT cats!'
+    else:
+        msg['Subject'] = 'New (non-flat) cats!'
     msg.set_content("""\
     New kities ({}) are waiting to be adopted by YOU!
     Check out the website here:
@@ -38,10 +41,11 @@ def send_email(new_cats, url):
         server.login(config['sender_email'], password)
         server.send_message(msg)
 
-    # msg['To'] = config['receiver_mail2']
-    # with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-    #     server.login(config['sender_email'], password)
-    #     server.send_message(msg)
+    # if flat_cat:
+    #     msg['To'] = config['receiver_mail2']
+    #     with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+    #         server.login(config['sender_email'], password)
+    #         server.send_message(msg)
 
 
 def save(names, memory_file):
@@ -105,11 +109,11 @@ def new_cats_in_shelter(memory_file, url):
     return new_cats
 
 
-def check_and_notify_me(memory_file, url):
+def check_and_notify_me(memory_file, url, flat_cat=False):
     new_cats = new_cats_in_shelter(memory_file, url)
 
     if len(new_cats):
-        send_email(new_cats, url)
+        send_email(new_cats, url, flat_cat)
         print(new_cats)
 
 
@@ -123,7 +127,7 @@ def main():
 
     check_and_notify_me('cats_available_all.txt', url_all)
 
-    check_and_notify_me('cats_available_flat.txt', url_flat)
+    check_and_notify_me('cats_available_flat.txt', url_flat, flat_cat=True)
 
 
 if __name__ == "__main__":
