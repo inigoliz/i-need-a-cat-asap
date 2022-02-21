@@ -1,2 +1,4 @@
 config.yml
 .DS_Store
+cats_available_all.txt
+cats_available_flat.txt
