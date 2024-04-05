@@ -1,6 +1,6 @@
 # I Need a Cat ASAP
 <p align="center">
-  <img src="https://kattens-vaern.dk/sites/all/themes/kattensvaern/images/logo.png" />
+ <img src="./assets/logo.png" alt="Cat shelter's logo" width=90%>
 </p>
 Copenhagen's cat shelters are highly monitorized by desperate cat seekers who spend the whole day refreshing the website. The few offers of adoption for flat-cats get taken in a matter of hours.
 In a desperate race to be the fastest one to call when a new cat is available, this bot webscraps the shelter's website and notifies me over email when a new cat is available for adoption.
